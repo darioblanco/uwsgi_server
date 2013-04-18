@@ -1,0 +1,16 @@
+[uwsgi]
+chdir = <%= node['uwsgi']['app_path'] %>
+processes = <%= node['uwsgi']['processes'] %>
+threads = <%= node['uwsgi']['threads'] %>
+stats = <%= node['uwsgi']['stats_host'] %>:<%= node['uwsgi']['stats_port'] %>
+module = <%= node['uwsgi']['module'] %>
+callable = <%= node['uwsgi']['callable'] %>
+master = <%= node['uwsgi']['master'] %>
+<% if node.recipes.include?("uwsgi::proxy") %>
+socket = <%= node['uwsgi']['socket'] %>
+<% else %>
+http = <%= node['uwsgi']['web_host'] %>:<%= node['uwsgi']['web_port'] %>
+<% end %>
+<% if if node.recipes.include?("uwsgi::asynchronous") %>
+gevent = <%= node['uwsgi']['gevent']['async_cores'] %>
+<% endif %>
