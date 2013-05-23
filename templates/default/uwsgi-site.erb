@@ -1,9 +1,9 @@
 server {
-    listen       <%= node['uwsgi']['nginx']['port'] %>;
+    listen       <%= node['uwsgi_server']['nginx']['port'] %>;
     server_name  _;
-    location / { try_files $uri @<%= node['uwsgi']['app_name'] %>; }
-    location @<%= node['uwsgi']['app_name'] %> {
+    location / { try_files $uri @<%= node['uwsgi_server']['app_name'] %>; }
+    location @<%= node['uwsgi_server']['app_name'] %> {
       include uwsgi_params;
-      uwsgi_pass unix:<%= node['uwsgi']['socket'] %>;
+      uwsgi_pass unix:<%= node['uwsgi_server']['socket'] %>;
     }
 }

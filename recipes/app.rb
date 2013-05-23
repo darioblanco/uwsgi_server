@@ -1,6 +1,6 @@
 #
 # Author:: Dario Blanco (<dario@darioblanco.com>)
-# Cookbook Name:: uwsgi-gevent
+# Cookbook Name:: uwsgi_server
 # Recipes:: app
 #
 # Copyright 2012, Dario Blanco
@@ -20,18 +20,18 @@
 
 include_recipe "iptables"
 include_recipe "supervisor"
-include_recipe "uwsgi::default"
+include_recipe "uwsgi_server::default"
 
 # Needed packages by uwsgi
 package "libssl0.9.8"
 
 python_pip "uwsgi" do
   action :install
-  version node['uwsgi']['version']
+  version node['uwsgi_server']['version']
 end
 
 # Create uWSGI config file
-template "#{node['uwsgi']['app_path']}/uwsgiconfig.ini" do
+template "#{node['uwsgi_server']['app_path']}/uwsgiconfig.ini" do
   source "uwsgiconfig.ini.erb"
   notifies :reload, "supervisor_service[uwsgi-app]"
 end
@@ -40,18 +40,18 @@ end
 supervisor_service "uwsgi-app" do
   action [:enable, :start]
   supports :reload => true, :restart => true
-  directory node['uwsgi']['app_path']
+  directory node['uwsgi_server']['app_path']
   user "www-data"
   command "uwsgi uwsgiconfig.ini"
-  stdout_logfile "#{node['uwsgi']['log_dir']}/access.log"
-  stderr_logfile "#{node['uwsgi']['log_dir']}/errors.log"
+  stdout_logfile "#{node['uwsgi_server']['log_dir']}/access.log"
+  stderr_logfile "#{node['uwsgi_server']['log_dir']}/errors.log"
 end
 
 # Open the desired ports
 begin
   iptables_rule "open_uwsgi_ports" do
     source "open_ports.erb"
-    variables :ports => [node['uwsgi']['web_port'], ]
+    variables :ports => [node['uwsgi_server']['web_port'], ]
   end
 rescue
   Chef::Log.warn("couldn't configure iptables for trackit")

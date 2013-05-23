@@ -1,6 +1,6 @@
 #
 # Author:: Dario Blanco (<dario@darioblanco.com>)
-# Cookbook Name:: uwsgi-gevent
+# Cookbook Name:: uwsgi_server
 # Recipes:: proxy
 #
 # Copyright 2013, Dario Blanco
@@ -38,7 +38,7 @@ end
 begin
   iptables_rule "open_nginx_ports" do
     source "open_ports.erb"
-    variables :ports => [node['uwsgi']['nginx']['port'], ]
+    variables :ports => [node['uwsgi_server']['nginx']['port'], ]
   end
 rescue
   Chef::Log.warn("couldn't configure iptables for nginx")

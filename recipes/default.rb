@@ -1,6 +1,6 @@
 #
 # Author:: Dario Blanco (<dario@darioblanco.com>)
-# Cookbook Name:: uwsgi-gevent
+# Cookbook Name:: uwsgi_server
 # Recipes:: default
 #
 # Copyright 2013, Dario Blanco
@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-directory "#{node['uwsgi']['log_dir']}" do
+directory "#{node['uwsgi_server']['log_dir']}" do
   mode "0775"
   owner "www-data"
   group "www-data"

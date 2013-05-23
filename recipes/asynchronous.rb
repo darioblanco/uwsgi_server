@@ -1,6 +1,6 @@
 #
 # Author:: Dario Blanco (<dario@darioblanco.com>)
-# Cookbook Name:: uwsgi-gevent
+# Cookbook Name:: uwsgi_server
 # Recipes:: asynchronous
 #
 # Copyright 2013, Dario Blanco
@@ -18,7 +18,7 @@
 # limitations under the License.
 #
 
-include_recipe "uwsgi::app"
+include_recipe "uwsgi_server::app"
 
 # Needed packages by gevent
 package "libevent-dev"

@@ -18,25 +18,25 @@
 # limitations under the License.
 #
 
-default['uwsgi']['app_name'] = "uwsgi"
+default['uwsgi_server']['app_name'] = "uwsgi"
 
 # uWSGI general settings
-default['uwsgi']['app_path'] = nil
-default['uwsgi']['callable'] = "app"
-default['uwsgi']['log_dir'] = '/var/log/uwsgi'
-default['uwsgi']['master'] = true
-default['uwsgi']['module'] = "webapp"
-default['uwsgi']['processes'] = 4
-default['uwsgi']['socket'] = "/tmp/uwsgi.sock"
-default['uwsgi']['stats_host'] = "127.0.0.1"
-default['uwsgi']['stats_port'] = 9191
-default['uwsgi']['threads'] = 2
-default['uwsgi']['version'] = "1.9.6"
-default['uwsgi']['web_host'] = "0.0.0.0"
-default['uwsgi']['web_port'] = 80
+default['uwsgi_server']['app_path'] = nil
+default['uwsgi_server']['callable'] = "app"
+default['uwsgi_server']['log_dir'] = '/var/log/uwsgi'
+default['uwsgi_server']['master'] = true
+default['uwsgi_server']['module'] = "webapp"
+default['uwsgi_server']['processes'] = 4
+default['uwsgi_server']['socket'] = "/tmp/uwsgi.sock"
+default['uwsgi_server']['stats_host'] = "127.0.0.1"
+default['uwsgi_server']['stats_port'] = 9191
+default['uwsgi_server']['threads'] = 2
+default['uwsgi_server']['version'] = "1.9.6"
+default['uwsgi_server']['web_host'] = "0.0.0.0"
+default['uwsgi_server']['web_port'] = 80
 
 # Gevent settings
-default['uwsgi']['gevent']['async_cores'] = 2000
+default['uwsgi_server']['gevent']['async_cores'] = 2000
 
 # Nginx reverse proxy settings
-default['uwsgi']['nginx']['port'] = 80
+default['uwsgi_server']['nginx']['port'] = 80

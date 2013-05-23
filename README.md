@@ -21,22 +21,22 @@ Cookbooks
 Attributes
 ==========
 
-* `node['uwsgi']['app_name']` - Name for the uWSGI web application
-* `node['uwsgi']['app_path']` - Web application project folder
-* `node['uwsgi']['callable']` - Name of the callable application (for instance 'app' in flask)
-* `node['uwsgi']['log_dir']` - Log path for storing access and error info
-* `node['uwsgi']['master']` - For running uwsgi as a master process
-* `node['uwsgi']['module']` - Module in which the callable application can be found
-* `node['uwsgi']['processes']` - Number of processes
-* `node['uwsgi']['socket']` - Unix socket location (used by nginx)
-* `node['uwsgi']['stats_host']` - Bind host for the stats server
-* `node['uwsgi']['stats_port']` - Bind port for the stats server
-* `node['uwsgi']['threads']` - Number of threads per process
-* `node['uwsgi']['version']` - uWSGI version to install
-* `node['uwsgi']['web_host']` - Bind host for the web server (only if there is not a proxy)
-* `node['uwsgi']['web_port']` - Bind port for the web server (only if there is not a proxy)
-* `node['uwsgi']['gevent']['async_cores']` - Number of gevent async workers
-* `node['uwsgi']['nginx']['port']` - Bind port for the reverse proxy
+* `node['uwsgi_server']['app_name']` - Name for the uWSGI web application
+* `node['uwsgi_server']['app_path']` - Web application project folder
+* `node['uwsgi_server']['callable']` - Name of the callable application (for instance 'app' in flask)
+* `node['uwsgi_server']['log_dir']` - Log path for storing access and error info
+* `node['uwsgi_server']['master']` - For running uwsgi as a master process
+* `node['uwsgi_server']['module']` - Module in which the callable application can be found
+* `node['uwsgi_server']['processes']` - Number of processes
+* `node['uwsgi_server']['socket']` - Unix socket location (used by nginx)
+* `node['uwsgi_server']['stats_host']` - Bind host for the stats server
+* `node['uwsgi_server']['stats_port']` - Bind port for the stats server
+* `node['uwsgi_server']['threads']` - Number of threads per process
+* `node['uwsgi_server']['version']` - uWSGI version to install
+* `node['uwsgi_server']['web_host']` - Bind host for the web server (only if there is not a proxy)
+* `node['uwsgi_server']['web_port']` - Bind port for the web server (only if there is not a proxy)
+* `node['uwsgi_server']['gevent']['async_cores']` - Number of gevent async workers
+* `node['uwsgi_server']['nginx']['port']` - Bind port for the reverse proxy
 
 Usage
 =====
@@ -45,26 +45,26 @@ Simply include the recipes where you want uWSGI installed. There are several pos
 
 ## uWSGI as a HTTP standalone server
     "run_list": [
-        "recipe[uwsgi::app]"
+        "recipe[uwsgi_server::app]"
     ]
 
 ## uWSGI with gevent support
     "run_list": [
-        "recipe[uwsgi::app]",
-        "recipe[uwsgi::asynchronous]"
+        "recipe[uwsgi_server::app]",
+        "recipe[uwsgi_server::asynchronous]"
     ]
 
 ## uWSGI with nginx as a reverse proxy
     "run_list": [
-        "recipe[uwsgi::app]",
-        "recipe[uwsgi::proxy]"
+        "recipe[uwsgi_server::app]",
+        "recipe[uwsgi_server::proxy]"
     ]
 
 ## uWSGI with nginx and gevent
     "run_list": [
-        "recipe[uwsgi::app]",
-        "recipe[uwsgi::proxy]",
-        "recipe[uwsgi::asynchronous]"
+        "recipe[uwsgi_server::app]",
+        "recipe[uwsgi_server::proxy]",
+        "recipe[uwsgi_server::asynchronous]"
     ]
 
 License and Author
