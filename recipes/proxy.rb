@@ -41,5 +41,5 @@ begin
     variables :ports => [node['uwsgi']['nginx']['port'], ]
   end
 rescue
-  Chef::Log.warn("couldn't configure iptables for trackit")
+  Chef::Log.warn("couldn't configure iptables for nginx")
 end
