@@ -1,6 +1,6 @@
 #
 # Author:: Dario Blanco (<dario@darioblanco.com>)
-# Cookbook Name:: uwsgi
+# Cookbook Name:: uwsgi-gevent
 # Recipes:: app
 #
 # Copyright 2012, Dario Blanco

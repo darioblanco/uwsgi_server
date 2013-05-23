@@ -1,6 +1,6 @@
 #
 # Author:: Dario Blanco (<dario@darioblanco.com>)
-# Cookbook Name:: uwsgi
+# Cookbook Name:: uwsgi-gevent
 # Attributes:: default
 #
 # Copyright 2013, Dario Blanco
